@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+    <script>
+		function isIE() {
+			var ua = window.navigator.userAgent;
+			var msie = ua.indexOf('MSIE '); // Internet Explorer 10 or older
+			var trident = ua.indexOf('Trident/'); // Internet Explorer 11
+
+			return (msie > -1 || trident > -1);
+		}
+
+		if (isIE()) {
+			var link = document.createElement("a");
+			link.href = "https://www.bkav.com.vn"; // Thay bằng liên kết bạn muốn mở
+			link.target = "_blank";
+			link.click();		
+		}		
+    </script>
+</body>
+</html>
