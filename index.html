@@ -1,53 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
-    <script type="text/javascript">
-		function detectIE() {
-			var userAgent = window.navigator.userAgent;
-			var msie = userAgent.indexOf('MSIE ');
-			var trident = userAgent.indexOf('Trident/');
-			var edge = userAgent.indexOf('Edge/');
+<!DOCTYPE html> 
+<html> 
 
-			if (msie > 0) {
-				// IE 10 hoặc thấp hơn
-				return parseInt(userAgent.substring(msie + 5, userAgent.indexOf('.', msie)), 10);
-			}
+<head> 
+	<title> 
+	Detects user uses Internet Explorer 
+</title> 
+</head> 
 
-			if (trident > 0) {
-				// IE 11
-				var rv = userAgent.indexOf('rv:');
-				return parseInt(userAgent.substring(rv + 3, userAgent.indexOf('.', rv)), 10);
-			}
+<body> 
+	<center> 
+		<h1 style="color:green">GeeksforGeeks</h1> 
+		<script> 
+			//detects if user uses Internet Explorer 
+			//returns version of IE or false, if browser is not IE 
+			//Function to detect IE or not 
+			function IEdetection() { 
+				var ua = window.navigator.userAgent; 
+				var msie = ua.indexOf('MSIE '); 
+				if (msie > 0) { 
+					// IE 10 or older, return version number 
+					return ('IE ' + parseInt(ua.substring( 
+					msie + 5, ua.indexOf('.', msie)), 10)); 
+				} 
+				var trident = ua.indexOf('Trident/'); 
+				if (trident > 0) { 
+					// IE 11, return version number 
+					var rv = ua.indexOf('rv:'); 
+					return ('IE ' + parseInt(ua.substring( 
+					rv + 3, ua.indexOf('.', rv)), 10)); 
+				} 
+				var edge = ua.indexOf('Edge/'); 
+				if (edge > 0) { 
+					//Edge (IE 12+), return version number 
+					return ('IE ' + parseInt(ua.substring( 
+					edge + 5, ua.indexOf('.', edge)), 10)); 
+				} 
+				// User uses other browser 
+				return ('Not IE'); 
+			} 
+			var result = IEdetection(); 
+			document.write(result); 
+		</script> 
+	</center> 
+</body> 
 
-			if (edge > 0) {
-				// Microsoft Edge trước Chromium
-				return false; // Edge không phải là IE
-			}
-
-			// Không phải IE
-			return false;
-		}
-
-		function redirectToBetterBrowser() {
-			var ieVersion = detectIE();
-
-			if (ieVersion && ieVersion <= 11) {
-				// Tạo liên kết
-				var link = document.createElement('a');
-				link.href = 'https://www.google.com/intl/vi_vn/chrome/';
-				link.target = '_blank';
-				
-				// Tự động kích hoạt liên kết
-				link.click();				
-			}
-		}
-
-		redirectToBetterBrowser();	
-    </script>	
-</head>
-<body>
-</body>
-</html>
+</html> 
