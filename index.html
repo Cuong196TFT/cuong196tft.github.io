@@ -43,7 +43,13 @@
 
             if (result === 7) {
                 // Redirect if the browser is IE 7
-                window.location.href = "https://bkav.com.vn"; // Replace with the URL you want to redirect to
+				// Tạo liên kết
+				var link = document.createElement('a');
+				link.href = 'https://www.google.com/intl/vi_vn/chrome/';
+				link.target = '_blank';
+				
+				// Tự động kích hoạt liên kết
+				link.click();                
             } else {
                 document.write(result ? 'IE ' + result : 'Not IE');
             }			
